@@ -80,5 +80,19 @@ public class AccountOwnerTest {
 
 	}
 	
+	@Test
+	public void isAccountOwnerAGoat()
+	{
+		String name = "Goat";
+		Assert.assertEquals("valid", AccountOwner.validateName(name));
+	}
+	
+	@Test
+	public void isAccountOwnerAZombie()
+	{
+		String name = "Zombie";
+		Assert.assertEquals("valid", AccountOwner.validateName(name));
+	}
+	
 
 }
