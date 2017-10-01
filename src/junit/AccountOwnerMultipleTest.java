@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import banksystem.AccountOwner;
+import database.Database;
 
 public class AccountOwnerMultipleTest {
 
@@ -15,7 +16,8 @@ public class AccountOwnerMultipleTest {
 	}
 
 	@Test
-	public void test() {
+	public void testFirstTwoIdsAndRetrieval() {
+		Database.getInstance().resetInMemory();
 		AccountOwner ownerOne = new AccountOwner("ownerOne", "J$");
 		ownerOne.put();
 
