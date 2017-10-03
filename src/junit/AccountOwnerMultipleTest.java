@@ -22,7 +22,7 @@ public class AccountOwnerMultipleTest {
 		ownerOne.put();
 
 		String ownerIdOne = ownerOne.getId();
-		Assert.assertEquals(ownerIdOne, "O1002");
+		Assert.assertEquals(ownerIdOne, "O1001");
 
 		AccountOwner ownerOneWrittenToDatabase = AccountOwner.get(ownerIdOne);
 
@@ -36,7 +36,7 @@ public class AccountOwnerMultipleTest {
 		ownerTwo.put();
 
 		String ownerIdTwo = ownerTwo.getId();
-		Assert.assertEquals(ownerIdTwo, "O1003");
+		Assert.assertEquals(ownerIdTwo, "O1002");
 
 		AccountOwner ownerTwoWrittenToDatabase = AccountOwner.get(ownerIdTwo);
 
