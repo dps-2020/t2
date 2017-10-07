@@ -12,7 +12,7 @@ import database.Database;
 public class AccountOwnerMultipleTest {
 
 	Database dataBase = Database.getInstance();
-	
+
 	@Before
 	public void setUp() throws Exception {
 		Database.setFileName("test.dat");
@@ -27,28 +27,26 @@ public class AccountOwnerMultipleTest {
 		ownerOne.put();
 
 		String ownerIdOne = ownerOne.getId();
-		Assert.assertEquals( "O1001", ownerIdOne);
+		Assert.assertEquals("O1001", ownerIdOne);
 
 		AccountOwner ownerOneWrittenToDatabase = AccountOwner.get(ownerIdOne);
 
 		Assert.assertEquals(ownerIdOne, ownerOneWrittenToDatabase.getId());
 		Assert.assertEquals("ownerOne", ownerOneWrittenToDatabase.getName());
 		Assert.assertEquals("J$", ownerOneWrittenToDatabase.getPassword());
-		
-		
-		
+
 		AccountOwner ownerTwo = new AccountOwner("ownerTwo", "J$");
 		ownerTwo.put();
 
 		String ownerIdTwo = ownerTwo.getId();
-		Assert.assertEquals(ownerIdTwo, "O1002");
+		Assert.assertEquals("O1002", ownerIdTwo);
 
 		AccountOwner ownerTwoWrittenToDatabase = AccountOwner.get(ownerIdTwo);
 
 		Assert.assertEquals(ownerIdTwo, ownerTwoWrittenToDatabase.getId());
 		Assert.assertEquals("ownerTwo", ownerTwoWrittenToDatabase.getName());
 		Assert.assertEquals("J$", ownerTwoWrittenToDatabase.getPassword());
-		
+
 	}
 
 }
