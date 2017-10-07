@@ -19,7 +19,7 @@ public class WithdrawalTest  {
 
  @Before
  public void setUp() throws Exception {
-  //This respository
+  //This repository
 	 
   Database.setFileName("test.dat");
   dataBase.eraseFile();

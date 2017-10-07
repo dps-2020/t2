@@ -21,12 +21,13 @@ public class AccountOwnerMultipleTest {
 	}
 
 	@Test
-	public void test() {
+	public void testFirstTwoIdsAndRetrieval() {
+		Database.getInstance().resetInMemory();
 		AccountOwner ownerOne = new AccountOwner("ownerOne", "J$");
 		ownerOne.put();
 
 		String ownerIdOne = ownerOne.getId();
-		//Assert.assertEquals("EXPECTED", "ACTUAL");
+
 		Assert.assertEquals(ownerIdOne, "O1001");
 
 		AccountOwner ownerOneWrittenToDatabase = AccountOwner.get(ownerIdOne);
