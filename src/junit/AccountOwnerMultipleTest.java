@@ -7,11 +7,17 @@ import org.junit.Before;
 import org.junit.Test;
 
 import banksystem.AccountOwner;
+import database.Database;
 
 public class AccountOwnerMultipleTest {
 
+	Database dataBase = Database.getInstance();
+	
 	@Before
 	public void setUp() throws Exception {
+		Database.setFileName("test.dat");
+		dataBase.eraseFile();
+		dataBase.load();
 	}
 
 	@Test
@@ -20,7 +26,8 @@ public class AccountOwnerMultipleTest {
 		ownerOne.put();
 
 		String ownerIdOne = ownerOne.getId();
-		Assert.assertEquals(ownerIdOne, "O1002");
+		//Assert.assertEquals("EXPECTED", "ACTUAL");
+		Assert.assertEquals(ownerIdOne, "O1001");
 
 		AccountOwner ownerOneWrittenToDatabase = AccountOwner.get(ownerIdOne);
 
@@ -34,7 +41,7 @@ public class AccountOwnerMultipleTest {
 		ownerTwo.put();
 
 		String ownerIdTwo = ownerTwo.getId();
-		Assert.assertEquals(ownerIdTwo, "O1003");
+		Assert.assertEquals(ownerIdTwo, "O1002");
 
 		AccountOwner ownerTwoWrittenToDatabase = AccountOwner.get(ownerIdTwo);
 
