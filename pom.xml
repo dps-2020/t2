@@ -2,13 +2,15 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>t1-dps2016</groupId>
+	<groupId>t2-dps2016</groupId>
 	<artifactId>Bank</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<concordion.output.dir>target/concordion</concordion.output.dir>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 
 	<dependencies>
@@ -52,6 +54,8 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>3.0.0</version>
+
 				<executions>
 
 					<execution>
@@ -64,6 +68,7 @@
 						<configuration>
 							<sources>
 								<source>src/banksystem</source>
+								<source>src/database</source>
 							</sources>
 						</configuration>
 					</execution>
@@ -108,7 +113,69 @@
 					</execution>
 				</executions>
 			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<formats>
+						<format>xml</format>
+					</formats>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>cobertura</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 
 	</build>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>2.3</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>3.0.5</version>
+				<configuration>
+					<debug>true</debug>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.8</version>
+
+				<configuration>
+					<skipEmptyReport>false</skipEmptyReport>
+					<includes>
+						<include>**/*.java</include>
+					</includes>
+					<compileSourceRoots>
+						<compileSourceRoot>${basedir}/src</compileSourceRoot>
+					</compileSourceRoots>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
 </project>
