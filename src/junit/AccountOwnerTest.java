@@ -26,6 +26,18 @@ public class AccountOwnerTest {
 		assertEquals("Invalid Account Owner ID", AccountOwner.validateOwnerId("O1001"));
 	}
 	
+	/*@Test
+	public void getNextIdIntTest() {
+		AccountOwner accountOwner = new AccountOwner();
+		int pre = accountOwner.getNextIdInt();
+		accountOwner.put();
+		AccountOwner accountOwner1 = new AccountOwner();
+		accountOwner1.put();
+		String accountOwnerIdString = accountOwner1.getId();
+		Integer id = new Integer(accountOwnerIdString.substring(1,accountOwnerIdString.length()-1));
+		assertEquals(pre, id.intValue());
+	}*/
+	
 	@Test
 	public void existingOwner() {
 		AccountOwner accountOwner = new AccountOwner();
@@ -79,6 +91,16 @@ public class AccountOwnerTest {
 		Assert.assertEquals("J$", ownerWrittenToDatabase.data.password);
 
 	}
+	
+	
+	@Test
+	public void conditionalNullWriteOwnerToDatabase() {
+		AccountOwner owner = new AccountOwner("owner", "J$");
+		owner.put();
+		//String ownerId = owner.getId();
+		Assert.assertEquals(null, AccountOwner.get(null));
+	}
+	
 	
 	@Test
 	public void isAccountOwnerAGoat()
