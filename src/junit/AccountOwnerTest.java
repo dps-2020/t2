@@ -44,6 +44,30 @@ public class AccountOwnerTest {
 	}
 	
 	@Test
+	public void validateNameTest() {
+		
+	}
+	
+	@Test
+	public void ConditionalvalidateNameTest() {
+		
+	}
+	
+	@Test
+	public void validatePasswordTest() {
+		
+	}
+	
+	@Test
+	public void setNameTest() {
+		
+	}
+	
+	@Test
+	public void setPasswordTest() {
+		
+	} 
+	@Test
 	public void existingOwner() {
 		AccountOwner accountOwner = new AccountOwner();
 		accountOwner.put();
@@ -96,8 +120,7 @@ public class AccountOwnerTest {
 		Assert.assertEquals("J$", ownerWrittenToDatabase.data.password);
 
 	}
-	
-	
+		
 	@Test
 	public void conditionalNullWriteOwnerToDatabase() {
 		AccountOwner owner = new AccountOwner("owner", "J$");
@@ -106,13 +129,6 @@ public class AccountOwnerTest {
 		Assert.assertEquals(null, AccountOwner.get(null));
 	}
 	
-	@Test
-	public void conditionalNullWriteOwnerToDatabase() {
-		//AccountOwner owner = new AccountOwner("owner", "J$");
-		//owner.put();
-		//String ownerId = owner.getId();
-		//Assert.assertEquals(null, AccountOwner.get(null));
-	}
 	@Test
 	public void isAccountOwnerAGoat()
 	{
