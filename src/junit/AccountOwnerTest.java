@@ -52,7 +52,7 @@ public class AccountOwnerTest {
 	}
 	
 	@Test
-	public void validateNameDefaultTest() {
+	public void validateNameNoArgTest() {
 		AccountOwner accountOwner = new AccountOwner();
 		accountOwner.put();
 		accountOwner.setName("ajunittestname");
