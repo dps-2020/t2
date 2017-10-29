@@ -29,7 +29,6 @@ public class AccountTest {
 		Account account = new Account("ownerId", "Checking", "100.00");
 		String nextAccountId = Account.getNextId();
 		Assert.assertEquals("A1001", nextAccountId);
-
 		account.put();
 		Database.dump("Write it to the database:");
 		account = Account.get(nextAccountId);
@@ -40,8 +39,10 @@ public class AccountTest {
 		Integer startingId = new Integer(nextAccountId.substring(1));
 		Integer endingId = new Integer(afterAddIndex.substring(1));
 		Assert.assertEquals(startingId.intValue(), endingId.intValue() - 1);
+		Assert.assertEquals(endingId, account.getIdAsInt());
 	}
-
+	
+	
 	@Test
 	public void checkAccountType() {
 
@@ -64,7 +65,7 @@ public class AccountTest {
 		Assert.assertEquals("valid", account.validateBalance("50"));
 		account = new Account("O1001", "Savings", "x");
 		Assert.assertEquals("Balance must be numeric", account.validateBalance());
-		Assert.assertEquals("Balance must be numeric", account.validateBalance("x"));
+		Assert.assertEquals("Balance must be numeric", Account.validateBalance("x"));
 
 	}
 
