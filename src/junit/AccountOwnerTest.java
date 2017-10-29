@@ -27,6 +27,11 @@ public class AccountOwnerTest {
 	}
 	
 	@Test
+	public void getNextIdTest() {
+		assertEquals("O1001", AccountOwner.getNextId());
+	}
+	
+	@Test
 	public void getNextIdIntTest() {
 		int pre = AccountOwner.getNextIdInt();
 		AccountOwner accountOwner = new AccountOwner();
@@ -36,6 +41,7 @@ public class AccountOwnerTest {
 		assertEquals(pre, id.intValue());
 	}
 	
+	
 	@Test
 	public void validateValidTest() {
 		AccountOwner accountOwner = new AccountOwner();
@@ -44,6 +50,19 @@ public class AccountOwnerTest {
 		accountOwner.setPassword("Bad2P$");
 		assertEquals("valid", accountOwner.validate());
 	}
+	
+	
+	@Test
+	public void validateValidConditionalTest() {
+		AccountOwner accountOwner = new AccountOwner();
+		accountOwner.put();
+		accountOwner.setName("");
+		accountOwner.setPassword("Bad2P$");
+		assertEquals("Name cannot be empty", accountOwner.validate());
+	}
+	
+	
+	
 	
 	@Test
 	public void validatePW2CharTest() {
@@ -90,6 +109,13 @@ public class AccountOwnerTest {
 		assertEquals("Password must contain at least 1 alphanumeric character", accountOwner.validate());
 	}
 	
+	@Test
+	public void validateNameTest() {
+		AccountOwner accountOwner = new AccountOwner();
+		accountOwner.put();
+		accountOwner.setName("ajunittestname");
+		assertEquals("valid", accountOwner.validateName("ajunittestname"));
+	}
 	
 	@Test
 	public void validateNameValidTest() {
@@ -134,6 +160,8 @@ public class AccountOwnerTest {
 	    accountOwner.setPassword(password);
 		assertEquals(password, accountOwner.getPassword());
 	} 
+	
+	
 	
 	@Test
 	public void existingOwner() {
