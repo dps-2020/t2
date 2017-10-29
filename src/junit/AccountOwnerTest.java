@@ -51,6 +51,10 @@ public class AccountOwnerTest {
 		assertEquals("valid", accountOwner.validate());
 	}
 	
+	@Test
+	public void validateValidCoverageTest() {
+		/*do we need one more validate coverage test?*/
+	}
 	
 	@Test
 	public void validateValidConditionalTest() {
