@@ -52,8 +52,11 @@ public class AccountOwnerTest {
 	}
 	
 	@Test
-	public void validateValidCoverageTest() {
-		/*do we need one more validate coverage test?*/
+	public void validateNameDefaultTest() {
+		AccountOwner accountOwner = new AccountOwner();
+		accountOwner.put();
+		accountOwner.setName("ajunittestname");
+		assertEquals("valid", accountOwner.validateName());
 	}
 	
 	@Test
@@ -222,10 +225,7 @@ public class AccountOwnerTest {
 	}
 		
 	@Test
-	public void conditionalNullWriteOwnerToDatabase() {
-		AccountOwner owner = new AccountOwner("owner", "J$");
-		owner.put();
-		//String ownerId = owner.getId();
+	public void accountOwnerConditionalNUllTest() {
 		Assert.assertEquals(null, AccountOwner.get(null));
 	}
 	
