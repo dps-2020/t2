@@ -12,7 +12,7 @@ import banksystem.PasswordManager;
 import database.Database;
 
 public class DepositTest {
-
+final String GOOD_PASSWORD = "M$09230w";
 	Database dataBase = Database.getInstance();
 
 	@Before
@@ -25,7 +25,20 @@ public class DepositTest {
 	@After
 	public void tearDown() throws Exception {
 	}
+@Test
+public void getNullTest() {
+	Assert.assertNull( Deposit.get("bananaface"));
+}
 
+@Test
+public void getDepositTest() {
+	String retrieveId = Deposit.getNextId();
+	new Deposit ("bananaface", "passionnose", "guavatongue").put();
+	Deposit deposit = Deposit.get(retrieveId);
+	Assert.assertEquals("guavatongue",deposit.getDepositAmount());
+	Assert.assertEquals("passionnose", deposit.getAccountId());
+	Assert.assertEquals("bananaface", deposit.getOwnerId());
+}
 	@Test
 	public void UpdateDeposit() {
 		// Testing deposits update and calculate properly. UAT 3.1
@@ -38,10 +51,25 @@ public class DepositTest {
 		Assert.assertEquals("valid", newDeposit.updateBalance("M$09230w"));
 		Assert.assertEquals("150.00", newAccount.getBalance());
 		newDeposit.put();
+		// @TODO Fix this test, deposits should count once
 		Assert.assertEquals("valid", newDeposit.updateBalance("M$09230w"));
 		Assert.assertEquals("250.00", newAccount.getBalance());
 
 	}
+
+
+@Test
+public void updateBalanceInvalidAccountOwnerTest() {
+	Assert.assertEquals("Invalid Account Owner ID", new Deposit("bananaface", "passionnose", "guavatongue").updateBalance(GOOD_PASSWORD));
+}
+
+@Test
+public void updateBalanceInvalidAccountTest() {
+	AccountOwner newAccountOwner = new AccountOwner("Michael", "M$09230w");
+	newAccountOwner.put();
+	Assert.assertEquals("Invalid Account ID", new Deposit("O1001", "passionnose", "guavatongue").updateBalance(GOOD_PASSWORD));
+
+}
 
 	@Test
 	public void DepositNotNegative() {
