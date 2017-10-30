@@ -29,7 +29,6 @@ public class AccountTest {
 		Account account = new Account("ownerId", "Checking", "100.00");
 		String nextAccountId = Account.getNextId();
 		Assert.assertEquals("A1001", nextAccountId);
-
 		account.put();
 		Database.dump("Write it to the database:");
 		account = Account.get(nextAccountId);
@@ -40,7 +39,17 @@ public class AccountTest {
 		Integer startingId = new Integer(nextAccountId.substring(1));
 		Integer endingId = new Integer(afterAddIndex.substring(1));
 		Assert.assertEquals(startingId.intValue(), endingId.intValue() - 1);
+		Assert.assertEquals(endingId, account.getIdAsInt());
+		Assert.assertEquals(1002,Account.getNextIdInt());
 	}
+	
+	@Test
+	public void setOwnerId() {
+		String nextAccountId = Account.getNextId();
+		Assert.assertEquals("A1001", nextAccountId);
+	}
+	
+	
 
 	@Test
 	public void checkAccountType() {
@@ -61,10 +70,10 @@ public class AccountTest {
 
 		Account account = new Account("O1001", "Checking", "50");
 		Assert.assertEquals("valid", account.validateBalance());
-		Assert.assertEquals("valid", account.validateBalance("50"));
+		Assert.assertEquals("valid", Account.validateBalance("50"));
 		account = new Account("O1001", "Savings", "x");
 		Assert.assertEquals("Balance must be numeric", account.validateBalance());
-		Assert.assertEquals("Balance must be numeric", account.validateBalance("x"));
+		Assert.assertEquals("Balance must be numeric", Account.validateBalance("x"));
 
 	}
 
@@ -100,8 +109,12 @@ public class AccountTest {
 		Assert.assertEquals("valid",Account.validateBalance(balance) );		
 	}
 
+	@Test
+	public void getFormattedBalance() {
+		String balance = "50.25";
+		Assert.assertEquals("$50.25", "$"+balance);
+	}
 	
-
 	@Test
 	public void accountDoesNotExistMessage() {
 		Assert.assertEquals("Account should not exist", "Invalid Account ID", Account.validateAccountExists("A1001"));
