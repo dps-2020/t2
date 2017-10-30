@@ -40,9 +40,17 @@ public class AccountTest {
 		Integer endingId = new Integer(afterAddIndex.substring(1));
 		Assert.assertEquals(startingId.intValue(), endingId.intValue() - 1);
 		Assert.assertEquals(endingId, account.getIdAsInt());
+		Assert.assertEquals(1002,Account.getNextIdInt());
+	}
+	
+	@Test
+	public void setOwnerId() {
+		String nextAccountId = Account.getNextId();
+		Assert.assertEquals("A1001", nextAccountId);
 	}
 	
 	
+
 	@Test
 	public void checkAccountType() {
 
