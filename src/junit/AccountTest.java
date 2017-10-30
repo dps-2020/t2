@@ -70,7 +70,7 @@ public class AccountTest {
 
 		Account account = new Account("O1001", "Checking", "50");
 		Assert.assertEquals("valid", account.validateBalance());
-		Assert.assertEquals("valid", account.validateBalance("50"));
+		Assert.assertEquals("valid", Account.validateBalance("50"));
 		account = new Account("O1001", "Savings", "x");
 		Assert.assertEquals("Balance must be numeric", account.validateBalance());
 		Assert.assertEquals("Balance must be numeric", Account.validateBalance("x"));
@@ -109,8 +109,13 @@ public class AccountTest {
 		Assert.assertEquals("valid",Account.validateBalance(balance) );		
 	}
 
+	@Test
+	public void getFormattedBalance() {
+		String balance = "50.25";
+		Assert.assertEquals("valid", Account.validateBalance(balance));
+		Assert.assertEquals("$50.25", "$"+balance);
+	}
 	
-
 	@Test
 	public void accountDoesNotExistMessage() {
 		Assert.assertEquals("Account should not exist", "Invalid Account ID", Account.validateAccountExists("A1001"));
