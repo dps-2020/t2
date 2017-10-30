@@ -225,7 +225,7 @@ public class AccountOwnerTest {
 	}
 		
 	@Test
-	public void accountOwnerConditionalNullTest() {
+	public void accountOwnerGetConditionalNullTest() {
 		Assert.assertEquals(null, AccountOwner.get(null));
 	}
 	
