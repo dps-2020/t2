@@ -85,6 +85,13 @@ public class AccountTest {
 	}
 	
 	@Test
+	public void add() {
+		Account account = new Account("O1001", "Checking", "50");
+		Assert.assertEquals("valid",account.add("100"));
+		Assert.assertEquals("150.00",account.getBalance());
+	}
+	
+	@Test
 	public void subMoney() {
 		Account account = new Account("O1001", "Checking", "50");
 		Assert.assertEquals("valid",account.subtract("50"));
