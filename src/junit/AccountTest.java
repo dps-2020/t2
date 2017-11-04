@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import banksystem.Account;
+import banksystem.Utilities;
 import database.Database;
 
 public class AccountTest {
@@ -84,6 +85,11 @@ public class AccountTest {
 		Assert.assertEquals("150.00",account.getBalance());
 	}
 	
+	@Test
+	public void setBalance() {
+		// TODO Auto-generated method stub
+	}
+
 	@Test
 	public void add() {
 		Account account = new Account("O1001", "Checking", "50");
