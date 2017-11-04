@@ -89,6 +89,11 @@ public class AccountTest {
 	public void setBalance() {
 		// TODO Auto-generated method stub
 	}
+	
+	@Test
+	public void setAccountType() {
+		
+	}
 
 	@Test
 	public void add() {
