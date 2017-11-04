@@ -58,7 +58,7 @@ public class AccountTest {
 		Account account = new Account("O1001", "Checking", "50");
 		Assert.assertEquals("valid", account.validateAccountType());
 		account = new Account("O1001", "Savings", "50");
-
+	
 		Assert.assertEquals("valid", account.validateAccountType());
 		account = new Account("O1001", "Money Market", "50");
 
@@ -85,15 +85,7 @@ public class AccountTest {
 		Assert.assertEquals("150.00",account.getBalance());
 	}
 	
-	@Test
-	public void setBalance() {
-		// TODO Auto-generated method stub
-	}
-	
-	@Test
-	public void setAccountType() {
-		
-	}
+
 
 	@Test
 	public void add() {
