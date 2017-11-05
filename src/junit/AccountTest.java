@@ -121,10 +121,19 @@ public class AccountTest {
 
 	@Test
 	public void getFormattedBalance() {
+		String expected = "$50";
 		Account account = new Account("O1001", "Checking", "50");
-		Assert.assertEquals("$50",account.getFormattedBalance() );		
+		Assert.assertEquals(expected,account.getFormattedBalance() );		
+		}
+
+/*	@Test
+	public void getFormattedBalance() {
+		String balance = "50.25";
+		Assert.assertEquals("$valid","$" + Account.validateBalance(balance));
+		String expected ="$50.25";
+		Assert.assertEquals(expected, "$" + balance);
 	}
-	
+	*/
 	@Test
 	public void accountDoesNotExistMessage() {
 		Assert.assertEquals("Account should not exist", "Invalid Account ID", Account.validateAccountExists("A1001"));
