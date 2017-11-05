@@ -121,9 +121,8 @@ public class AccountTest {
 
 	@Test
 	public void getFormattedBalance() {
-		String balance = "50.25";
-		String expected = "$50.25";
-		Assert.assertEquals(expected,"$" + balance );		
+		Account account = new Account("O1001", "Checking", "50");
+		Assert.assertEquals("$50",account.getFormattedBalance() );		
 	}
 	
 	@Test
