@@ -122,7 +122,8 @@ public class AccountTest {
 	@Test
 	public void getFormattedBalance() {
 		String balance = "50.25";
-		Assert.assertEquals("$valid","$" + Account.validateBalance(balance) );		
+		String expected = "$50.25";
+		Assert.assertEquals(expected,"$" + balance );		
 	}
 	
 	@Test
