@@ -110,6 +110,15 @@ public class AccountTest {
 	}
 	
 	@Test
+	public void subtract() {
+		Account account = new Account("O1001","Checking","50");
+		String tosubtract = "25.00" ;
+		account.subtract(tosubtract);
+		Assert.assertEquals("25.00", account.getBalance());
+	
+	}
+	
+	@Test
 	public void negativeBalance() {
 		String balance = "-50";
 		Assert.assertEquals("Balance cannot be negative",Account.validateBalance(balance) );		
