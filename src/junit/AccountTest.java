@@ -112,8 +112,7 @@ public class AccountTest {
 	@Test
 	public void subtract() {
 		Account account = new Account("O1001","Checking","50");
-		String tosubtract = "25.00" ;
-		account.subtract(tosubtract);
+		Assert.assertEquals("valid", account.subtract("25.00"));
 		Assert.assertEquals("25.00", account.getBalance());
 	
 	}
