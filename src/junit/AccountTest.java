@@ -51,7 +51,12 @@ public class AccountTest {
 		Assert.assertEquals("Morgul the friendly drelb", account.getOwnerId());
 	}
 	
-
+	@Test
+	public void setAccountType() {
+		Account account = new Account("O1001", "Checking", "50");
+		account.setAccountType("Checking");
+		Assert.assertEquals("Checking", account.getAccountType());
+	}
 
 	@Test
 	public void checkAccountType() {
