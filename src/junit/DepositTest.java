@@ -57,6 +57,30 @@ public void getDepositTest() {
 
 	}
 
+@Test
+public void getIdTest() {
+	Database.getInstance().resetInMemory();
+	Deposit newDeposit = new Deposit("O1001", "A1001", "100.00");
+	newDeposit.put();
+	Assert.assertEquals ("D1001", newDeposit.getId());
+	}
+	
+@Test
+public void setDepositAmountTest() {
+	Deposit newDeposit = new Deposit("O1001", "A1001", "100.00");
+	newDeposit.setDepositAmount("mangoEar");
+	Assert.assertEquals ("mangoEar", newDeposit.getDepositAmount());
+	}
+
+
+@Test
+public void getIdAsIntTest() {
+	Database.getInstance().resetInMemory();
+	Deposit newDeposit = new Deposit("O1001", "A1001", "100.00");
+	Assert.assertEquals (new Integer (1001), newDeposit.getIdAsInt());
+	
+}
+	
 
 @Test
 public void updateBalanceInvalidAccountOwnerTest() {
