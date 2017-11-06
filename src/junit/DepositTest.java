@@ -72,6 +72,20 @@ public void setDepositAmountTest() {
 	Assert.assertEquals ("mangoEar", newDeposit.getDepositAmount());
 	}
 
+@Test
+public void setAmountIdTest() {
+	Deposit newDeposit = new Deposit("O1001", "A1001", "100.00");
+	newDeposit.setAccountId("appleHead");
+	Assert.assertEquals ("appleHead", newDeposit.getAccountId());
+	}
+
+@Test
+public void setOwnerIdTest() {
+	Deposit newDeposit = new Deposit("O1001", "A1001", "100.00");
+	newDeposit.setOwnerId("pearHair");
+	Assert.assertEquals ("pearHair", newDeposit.getOwnerId());
+	}
+
 
 @Test
 public void getIdAsIntTest() {
