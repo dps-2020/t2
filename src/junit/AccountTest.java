@@ -46,11 +46,12 @@ public class AccountTest {
 	
 	@Test
 	public void setOwnerId() {
-		String nextAccountId = Account.getNextId();
-		Assert.assertEquals("A1001", nextAccountId);
+		Account account = new Account("O1001", "Checking", "50");
+		account.setOwnerId("Morgul the friendly drelb");
+		Assert.assertEquals("Morgul the friendly drelb", account.getOwnerId());
 	}
 	
-	
+
 
 	@Test
 	public void checkAccountType() {
@@ -65,6 +66,8 @@ public class AccountTest {
 		Assert.assertEquals("Account Type invalid",
 				account.validateAccountType());
 	}
+	
+	
 
 	@Test
 	public void checkMoney() {
