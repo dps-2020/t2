@@ -6,7 +6,7 @@
 	<classpathentry kind="lib" path="jars/xom-1.2.5.jar"/>
 	<classpathentry kind="lib" path="jars/ognl-2.6.9.jar"/>
 	<classpathentry kind="lib" path="jars/uispec4j-2.4-jdk16.jar"/>
-	<classpathentry kind="lib" path="jars/junit-4.11-SNAPSHOT-20120805-1225.jar"/>
 	<classpathentry kind="lib" path="jars/jemmy.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
