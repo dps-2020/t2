@@ -17,22 +17,22 @@ public class Account implements Serializable {
 	public AccountData data = new AccountData();
 
 	public Account(String ownerId, String accountType, String balance) {
-		this.data.ownerId = ownerId;
-		this.data.accountType = accountType;
-		this.data.balance = balance;
+		data.ownerId = ownerId;
+		data.accountType = accountType;
+		data.balance = balance;
 	}
 
 	public Account() {
 	}
 
 	public String validate() {
-		return ( validate( getOwnerId(),  getAccountType(),  getBalance()));
+		return ( validateOwnerIdAccountTypeBalance( getOwnerId(),  getAccountType(),  getBalance()));
 	}
 
-	public static String validate(String ownerId, String accountType,
+	public static String validateOwnerIdAccountTypeBalance(String ownerId, String accountType,
 			String balance) {
 		if (!AccountOwner.validateOwnerId(ownerId).equals("valid")) {
-			return (AccountOwner.validateOwnerId(ownerId));
+			return (AccountOwner.verifySavedOwnerId(ownerId));
 		} else if (!validateAccountType(accountType).equals("valid")) {
 			return (validateAccountType(accountType));
 		} else if (!validateBalance(balance).equals("valid")) {

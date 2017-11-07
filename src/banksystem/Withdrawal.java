@@ -121,7 +121,7 @@ public class Withdrawal implements Serializable {
 	public String updateBalance(String password) {
 		AccountOwner newAccountOwner = AccountOwner.get(this.data.ownerId);
 		System.out.println ( this.data.ownerId + " " +  newAccountOwner );
-		if (AccountOwner.validateOwnerId(this.data.ownerId).equals("valid"))
+		if (AccountOwner.verifySavedOwnerId(this.data.ownerId).equals("valid"))
 			if (PasswordManager.authenticate(password, newAccountOwner.getPassword()) == "valid")
 			{
 				if (Account.validateAccountExists(this.data.accountId).equals("valid"))
@@ -147,7 +147,7 @@ public class Withdrawal implements Serializable {
 			else
 				return (AccountOwner.authenticate(password, this.data.ownerId));
 		else
-			return (AccountOwner.validateOwnerId(this.data.ownerId));
+			return (AccountOwner.verifySavedOwnerId(this.data.ownerId));
 	}
 	
 }

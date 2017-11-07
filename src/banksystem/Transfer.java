@@ -113,7 +113,7 @@ public class Transfer implements Serializable {
 	public String validate(String password) {
 		AccountOwner newAccountOwner = AccountOwner.get(this.data.ownerId);
 		System.out.println ( this.data.ownerId + " " +  newAccountOwner );
-		if (AccountOwner.validateOwnerId(this.data.ownerId).equals("valid"))
+		if (AccountOwner.verifySavedOwnerId(this.data.ownerId).equals("valid"))
 			if (PasswordManager.authenticate(password, newAccountOwner.getPassword()) == "valid")
 			{
 				return ("valid");
@@ -121,7 +121,7 @@ public class Transfer implements Serializable {
 			else
 				return (AccountOwner.authenticate(password, this.data.ownerId));
 		else
-			return (AccountOwner.validateOwnerId(this.data.ownerId));
+			return (AccountOwner.verifySavedOwnerId(this.data.ownerId));
 	}
 
 	public static String validate(String ownerId, String toAccountId, String fromAccountId, String password, String transferAmount) {
@@ -137,7 +137,7 @@ public class Transfer implements Serializable {
 	public String transfer(String password) {
 		AccountOwner newAccountOwner = AccountOwner.get(this.data.ownerId);
 		System.out.println ( this.data.ownerId + " " +  newAccountOwner );
-		if (AccountOwner.validateOwnerId(this.data.ownerId).equals("valid"))
+		if (AccountOwner.verifySavedOwnerId(this.data.ownerId).equals("valid"))
 		{
 			if (PasswordManager.authenticate(password, newAccountOwner.getPassword()) == "valid")
 			{
@@ -173,6 +173,6 @@ public class Transfer implements Serializable {
 				return (AccountOwner.authenticate(password, this.data.ownerId));
 		}
 		else
-			return (AccountOwner.validateOwnerId(this.data.ownerId));
+			return (AccountOwner.verifySavedOwnerId(this.data.ownerId));
 	}
 }

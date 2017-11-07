@@ -14,16 +14,16 @@ public class AccountOwner implements Serializable {
 
 	String id;
 
-	public  AccountOwnerData data = new AccountOwnerData();
+	public AccountOwnerData data = new AccountOwnerData();
 
 	public String getId() {
 		return (id);
 	}
 
-	public String  validate() {
-		return ( validate(getName(),getPassword()) );
+	public String validate() {
+		return (validate(getName(), getPassword()));
 	}
-	
+
 	public static String validate(String name, String password) {
 		String result = validateName(name);
 		if (result.equals("valid")) {
@@ -32,8 +32,8 @@ public class AccountOwner implements Serializable {
 		return (result);
 	}
 
-	public String  validateName() {
-		return ( validateName(getName()) );
+	public String validateName() {
+		return (validateName(getName()));
 	}
 
 	public static String validateName(String name) {
@@ -48,12 +48,21 @@ public class AccountOwner implements Serializable {
 		}
 	}
 
-	public static String validateOwnerId(String ownerId) {
-		if (Database.exists(ownerId) ) {
+	public static String verifySavedOwnerId(String ownerId) {
+		if (Database.exists(ownerId)) {
 			return ("valid");
 		} else {
 			return ("Invalid Account Owner ID");
 		}
+	}
+
+	public static String validateOwnerId(String ownerId) {
+		if (ownerId.matches("O[0-9][0-9][0-9][0-9]")) {
+			return ("valid");
+		} else {
+			return ("Invalid Account Owner ID");
+		}
+
 	}
 
 	public static String validatePassword(String password) {
@@ -68,7 +77,7 @@ public class AccountOwner implements Serializable {
 	public AccountOwner() {
 	}
 
-	public  static String authenticate(String password, AccountOwner owner) {
+	public static String authenticate(String password, AccountOwner owner) {
 		return (PasswordManager.authenticate(password, owner.getPassword()));
 	}
 
@@ -83,8 +92,7 @@ public class AccountOwner implements Serializable {
 	}
 
 	public static AccountOwner get(String accountOwnerId) {
-		AccountOwnerData accountOwnerData = (AccountOwnerData) Database
-				.get(accountOwnerId);
+		AccountOwnerData accountOwnerData = (AccountOwnerData) Database.get(accountOwnerId);
 		if (accountOwnerData == null) {
 			return (null);
 		}
@@ -94,16 +102,15 @@ public class AccountOwner implements Serializable {
 		return (accountOwner);
 	}
 
-	
 	public static String getNextId() {
 		return (Database.getNextIdString(prefix));
 	}
-	
+
 	public static int getNextIdInt() {
 		return (Database.getNextIdInt(prefix));
 	}
 
-	public  String getName() {
+	public String getName() {
 		return data.name;
 	}
 

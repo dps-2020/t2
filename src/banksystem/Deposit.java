@@ -60,7 +60,7 @@ public class Deposit implements Serializable {
 	public String updateBalance(String password) {
 		AccountOwner newAccountOwner = AccountOwner.get(this.data.ownerId);
 		System.out.println ( this.data.ownerId + " " +  newAccountOwner );
-		if (AccountOwner.validateOwnerId(this.data.ownerId).equals("valid"))
+		if (AccountOwner.verifySavedOwnerId(this.data.ownerId).equals("valid"))
 			if (PasswordManager.authenticate(password, newAccountOwner.getPassword()) == "valid")
 			{
 				if (Account.validateAccountExists(this.data.accountId).equals("valid"))
@@ -86,7 +86,7 @@ public class Deposit implements Serializable {
 			else
 				return ("Invalid Password");
 		else
-			return (AccountOwner.validateOwnerId(this.data.ownerId));
+			return (AccountOwner.verifySavedOwnerId(this.data.ownerId));
 	}
 	
 	public String getOwnerId() {
@@ -153,7 +153,7 @@ public class Deposit implements Serializable {
 	public static String validate(String ownerId, String accountId,
 			String password, String depositAmount) {
 		
-		return (AccountOwner.validateOwnerId(ownerId));
+		return (AccountOwner.verifySavedOwnerId(ownerId));
 
 	}
 
