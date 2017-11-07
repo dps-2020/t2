@@ -84,12 +84,14 @@ public class Account implements Serializable {
 		}
 		return ("valid");
 	}
+	
 
-	public String add(String s) {
-		if (!validateBalance(s).equals("valid")) {
-			return (validateBalance(s));
+
+	public String add(String amount) {
+		if (!validateBalance(amount).equals("valid")) {
+			return (validateBalance(amount));
 		}
-		long amountToAdd = Utilities.toCents(s);
+		long amountToAdd = Utilities.toCents(amount);
 		long currentBalance = Utilities.toCents(getBalance());
 		long newBalance = currentBalance + amountToAdd;
 		setBalance(Utilities.toMoney(newBalance));

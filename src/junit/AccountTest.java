@@ -123,19 +123,18 @@ public class AccountTest {
 	}
 
 	@Test
-	public void addMoney() {
+	public void addValidAmountToBalance() {
 		Account account = new Account("O1001", "Checking", "50");
 		Assert.assertEquals("valid",account.add("100"));
 		Assert.assertEquals("150.00",account.getBalance());
 	}
 	
 
-
 	@Test
-	public void add() {
-		Account account = new Account("O1001", "Checking", "50");
-	    account.add("100");
-		Assert.assertEquals("150.00",account.getBalance());
+	public void addInvalidAmountToBalance() {
+		Account account = new Account("O1001", "Checking", "50.00");
+		Assert.assertEquals("Balance cannot be empty",account.add(""));
+		Assert.assertEquals("50.00",account.getBalance());
 	}
 	
 	@Test
@@ -165,6 +164,7 @@ public class AccountTest {
 		Assert.assertEquals("valid",Account.validateBalance(balance) );		
 	}
 	
+
 	@Test
 	public void dollarsAndCents() {
 		String balance = "50.25";
