@@ -86,7 +86,6 @@ public void setOwnerIdTest() {
 	Assert.assertEquals ("pearHair", newDeposit.getOwnerId());
 	}
 
-
 @Test
 public void getIdAsIntTest() {
 	Database.getInstance().resetInMemory();
