@@ -78,7 +78,7 @@ public void setAmountIdTest() {
 	newDeposit.setAccountId("appleHead");
 	Assert.assertEquals ("appleHead", newDeposit.getAccountId());
 	}
-
+ 
 @Test
 public void setOwnerIdTest() {
 	Deposit newDeposit = new Deposit("O1001", "A1001", "100.00");
