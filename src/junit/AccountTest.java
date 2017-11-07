@@ -138,6 +138,24 @@ public class AccountTest {
 	}
 	
 	@Test
+	public void subtractValidAmountFromBalance() {
+		Account account = new Account("O1001", "Checking", "50");
+		Assert.assertEquals("valid",account.subtract("50"));
+		Assert.assertEquals("0.00",account.getBalance());
+	}
+	
+	@Test
+	public void subtractInvalidAmountFromBalance() {
+		Account account = new Account("O1001","Checking","50.00");
+		Assert.assertEquals("Balance cannot be empty", account.subtract(""));
+		Assert.assertEquals("50.00", account.getBalance());
+	
+	}
+	
+	
+	
+/*	
+	@Test
 	public void subMoney() {
 		Account account = new Account("O1001", "Checking", "50");
 		Assert.assertEquals("valid",account.subtract("50"));
@@ -151,7 +169,7 @@ public class AccountTest {
 		Assert.assertEquals("25.00", account.getBalance());
 	
 	}
-	
+*/
 	@Test
 	public void negativeBalance() {
 		String balance = "-50";
