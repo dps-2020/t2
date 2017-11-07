@@ -23,7 +23,7 @@ public class AccountOwnerTest {
 
 	@Test
 	public void nonExistingOwner() {
-		assertEquals("Invalid Account Owner ID", AccountOwner.validateOwnerId("O1001"));
+		assertEquals("Invalid Account Owner ID", AccountOwner.verifySavedOwnerId("O1001"));
 	}
 	
 	@Test
@@ -175,8 +175,8 @@ public class AccountOwnerTest {
 		AccountOwner accountOwner = new AccountOwner();
 		accountOwner.put();
 		assertEquals("O1001", accountOwner.getId());
-		assertEquals("valid", AccountOwner.validateOwnerId("O1001"));
-		assertEquals("Invalid Account Owner ID", AccountOwner.validateOwnerId("O1002"));
+		assertEquals("valid", AccountOwner.verifySavedOwnerId("O1001"));
+		assertEquals("Invalid Account Owner ID", AccountOwner.verifySavedOwnerId("O1002"));
 	}
 	
 	@Test

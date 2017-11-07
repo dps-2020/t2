@@ -25,6 +25,42 @@ public class AccountTest {
 	}
 
 	@Test
+	public void saveOwnerTypeAmount() {		
+		Account account = new Account("O1001", "Checking", "100.00");
+		String validationString = account.validate();
+		account.put();
+		Assert.assertEquals("valid", validationString);
+	}
+	
+	
+	@Test
+	public void saveInvalidOwnert() {		
+		Account account = new Account("OO101", "Checking", "100.00");
+		String validationString = account.validate();
+		account.put();
+		Assert.assertEquals("Invalid Account Owner ID", validationString);
+	}
+	
+	@Test
+	public void saveInvalidType() {		
+		Account account = new Account("O1001", "Checkings", "100.00");
+		String validationString = account.validate();
+		account.put();
+		Assert.assertEquals("Account Type invalid", validationString);
+	}
+	
+	
+	@Test
+	public void saveInvalidBalance() {		
+		Account account = new Account("O1001", "Checking", "100.000");
+		String validationString = account.validate();
+		account.put();
+		Assert.assertEquals("Amount must be dollars and cents", validationString);
+	}
+	
+	
+	
+	@Test
 	public void testAccountId() {
 
 		Account account = new Account("ownerId", "Checking", "100.00");

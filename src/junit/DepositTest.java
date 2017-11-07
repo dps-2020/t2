@@ -148,8 +148,8 @@ public void updateBalanceInvalidAccountTest() {
 		Deposit deposit1 = new Deposit("O1001", "A1004", "1.00");
 		// Assert.assertEquals("Invalid Account Owner ID",
 		// accountOwner1.validateOwnerId("O1001"));
-		Assert.assertEquals("valid", accountOwner1.validateOwnerId("O1001"));
-		Assert.assertEquals("Invalid Account Owner ID", accountOwner1.validateOwnerId("O1002"));
+		Assert.assertEquals("valid", accountOwner1.verifySavedOwnerId("O1001"));
+		Assert.assertEquals("Invalid Account Owner ID", accountOwner1.verifySavedOwnerId("O1002"));
 		// Assert.assertEquals("valid", accountOwner1.validateOwnerId("O1002"));
 	}
 

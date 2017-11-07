@@ -47,8 +47,7 @@ public class CreateAccountUATVerboseTest extends ConcordionTestCase {
 		String result = PasswordManager.authenticate(presentedPassword,
 				expectedPassword);
 		if (!result.equals("valid")) {
-			AccountWithStatus account = new AccountWithStatus();
-			account.status = result;
+			AccountWithStatus account = new AccountWithStatus(result);
 			return (account);
 		}
 
@@ -64,7 +63,7 @@ public class CreateAccountUATVerboseTest extends ConcordionTestCase {
 		database.eraseFile();
 		database.load();
 
-		return ( AccountOwner.validateOwnerId(ownerid) );
+		return ( AccountOwner.verifySavedOwnerId(ownerid) );
 
 	}
 
