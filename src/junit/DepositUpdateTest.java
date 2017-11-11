@@ -38,5 +38,27 @@ public class DepositUpdateTest {
 		newDeposit.put();
 
 	}
+	
+	@Test
+	public void UpdateDepositBadOwner() {
+		Database.getInstance().resetInMemory();
+
+		AccountOwner accountOwner = new AccountOwner("Michael", "M$09230w");
+		accountOwner.put();
+		String accountOwnerId = accountOwner.getId();
+				
+		Account account = new Account(accountOwnerId, "Checking", "50.00");
+		account.put();
+		String accountId = account.getId();
+		
+		AccountOwner depositOwner = new AccountOwner("Roko basilisk", "I♡Pupπes");
+		depositOwner.put();
+		String depositOwnerId = depositOwner.getId();
+
+		Deposit newDeposit = new Deposit(depositOwnerId, accountId, "100.00");
+		// Show that the account is not valid for the owner
+		Assert.assertEquals("Invalid Account ID", newDeposit.updateBalance("I♡Pupπes"));
+		
+	}
 
 }
